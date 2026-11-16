@@ -1,0 +1,35 @@
+name: Build iOS Tweak (PAIN x tkietn)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Theos
+        uses: Randomblock1/theos-action@v1
+
+      - name: Compile Package
+        run: |
+          make clean
+          make package FINALPACKAGE=1
+
+      - name: Upload Artifacts (.deb & .dylib)
+        uses: actions/upload-artifact@v4
+        with:
+          name: PAIN_x_tkietn_iOS_Build
+          path: |
+            packages/*.deb
+            .theos/obj/*.dylib
+            .theos/obj/debug/*.dylib

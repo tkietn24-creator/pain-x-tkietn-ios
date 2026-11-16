@@ -1,0 +1,10 @@
+Package: com.tkietn.painxtkietn
+Name: PAIN x tkietn
+Depends: mobilesubstrate
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Dark Glassmorphic Metal ImGui Menu for iOS
+Maintainer: tkietn
+Author: tkietn
+Section: Tweaks
+
